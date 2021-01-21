@@ -168,6 +168,7 @@ def get_cleaned_english_sentence(raw_english_sentence):
     """
     # ===Modify codes below=============
     # 조건에 따라 변환되어야 할 결과를 result 변수에 할당 또는 필요에 따라 자유로운 수정
+    raw_english_sentence = raw_english_sentence.strip()
     english_sentence = "".join(
         [character for character in raw_english_sentence if character not in ".,!?"])
     return english_sentence
@@ -254,11 +255,11 @@ def decoding_sentence(morse_sentence):
 
     result = []
     for character in morse_sentence.split(" "):
-        if character is not "":
-            result.append(decoding_character(character))
+        if character is "":
+            result.append(" ")
         else:
-            result.append("-")
-    return " ".join(result).replace(" ", "").replace("-", " ")
+            result.append(decoding_character(character))
+    return "".join(result)
 
     # ==================================
 
